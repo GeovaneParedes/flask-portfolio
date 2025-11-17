@@ -10,6 +10,14 @@ from .models import Projeto, Tecnologia, ConfiguracaoSite  # Importa os Modelos
 def index(request):
     """
     Renderiza a página inicial do portfólio, buscando dados dinâmicos dos modelos.
+
+    A view busca o objeto ConfiguracaoSite (Singleton) e aplica fallback (get_or_create).
+    As consultas de Projeto e Tecnologia são otimizadas com filtros, garantindo eficiência algorítmica.
+
+    Contexto Retornado:
+    - config: Objeto ConfiguracaoSite.
+    - projetos: Queryset de Projetos ativos.
+    - tecnologias: Queryset de todas as Tecnologias.
     """
 
     # Busca a única instância de configuração ou cria uma se não existir
