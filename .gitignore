@@ -3,3 +3,21 @@
 __pycache__/
 *.pyc
 .env.example
+# .gitignore
+# Arquivos de ambiente e logs (Segurança)
+.env
+*.log
+db.sqlite3
+
+# Artefatos do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente Virtual (Use o nome que você realmente criou, venv ou env)
+venv/
+env/
+
+# Arquivos de Deploy (NÃO DEVEM SER VERSIONADOS)
+/staticfiles/
+/media/
