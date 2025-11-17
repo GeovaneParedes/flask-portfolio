@@ -3,13 +3,9 @@
 __pycache__/
 *.pyc
 .env.example
-# .gitignore
-# Arquivos de ambiente e logs (Segurança)
 .env
 *.log
 db.sqlite3
-
-# Artefatos do Python
 __pycache__/
 *.pyc
 *.pyo
