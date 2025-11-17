@@ -8,6 +8,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Modularidade: Direciona todas as requisições para as URLs do app 'portfolio'
     path("", include("portfolio.urls")),
+    path("accounts/", include("django.contrib.auth.urls"))
 ]
 
 # Padrão DevOps/Performance: Serve arquivos estáticos APENAS em desenvolvimento (DEBUG=True).

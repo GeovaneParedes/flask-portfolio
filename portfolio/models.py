@@ -14,13 +14,18 @@ class ConfiguracaoSite(models.Model):
     descricao_sobre_mim = models.TextField(
         help_text="O parágrafo principal da seção 'Sobre Mim'."
     )
-    
+
     class Meta:
         verbose_name = "Configuração do Site"
         verbose_name_plural = "Configuração do Site"
-    
+
     # Garantia de que haverá apenas uma instância deste modelo (Singleton)
     def save(self, *args, **kwargs):
+        """
+        Garante que apenas uma instância deste modelo (Singleton) possa ser salva no banco.
+        Se uma nova instância for detectada, levanta uma exceção para evitar
+        duplicidade de configuração global, garantindo tratamento robusto de erros.
+        """
         if not self.pk and ConfiguracaoSite.objects.exists():
             # Tratamento robusto de erros: previne múltiplos objetos
             raise Exception('Só pode haver uma instância de ConfiguracaoSite.')
@@ -76,6 +81,12 @@ class Projeto(models.Model):
 
     # MELHORIA CLEAN CODE: Geração automática do slug antes de salvar
     def save(self, *args, **kwargs):
+        """
+        Gera automaticamente um slug amigável (SEO) a partir do título do projeto,
+        caso o slug ainda não tenha sido definido.
+        O método utiliza slugify para garantir um slug limpo.
+        O processo garante eficiência e evita a sobrescrita de slugs customizados.
+        """
         if not self.slug:
             # Garante que o slug seja limpo e baseado no título
             self.slug = slugify(self.titulo)
