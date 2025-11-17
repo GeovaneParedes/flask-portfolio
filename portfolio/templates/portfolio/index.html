@@ -1,0 +1,86 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<header class="flex flex-col items-center justify-center h-screen text-center px-4 md:px-6">
+    <h1 
+        id="typed-text" 
+        class="text-5xl md:text-7xl font-extrabold text-white mb-4 min-h-[60px]"
+        data-typed-text="{{ config.titulo_header|default:'DevGege - Backend Developer' }}"
+    ></h1>
+    <p class="text-xl text-gray-400">Engenheiro de Software | Python | Automação | Backend</p>
+
+    <div class="mt-8 flex space-x-6" role="navigation" aria-label="Canais de Contato">
+      <a href="mailto:devgegepythonjr@gmail.com" title="E-mail" aria-label="Enviar E-mail" class="contact-icon">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a href="https://t.me/DevGege" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Abrir Telegram" class="contact-icon">
+        <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/geovane-paredes-39694b30b" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="Abrir LinkedIn" class="contact-icon">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      </a>
+      <a href="https://github.com/GeovaneParedes" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="Abrir GitHub" class="contact-icon">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
+      </a>
+    </div>
+</header>
+
+<section id="sobre" class="py-20 px-8 max-w-4xl mx-auto text-center" aria-labelledby="sobre-titulo">
+    <h2 id="sobre-titulo" class="text-3xl font-bold mb-6 text-primary">Sobre Mim</h2>
+    <p class="text-gray-300 leading-relaxed text-lg">
+        {{ config.descricao_sobre_mim|linebreaks }}
+    </p>
+</section>
+
+<section id="stack" class="py-20 bg-gray-800" aria-labelledby="stack-titulo">
+    <div class="max-w-5xl mx-auto text-center px-8">
+      <h2 id="stack-titulo" class="text-3xl font-bold mb-10 text-primary">Stack Técnica</h2>
+      <div class="flex flex-wrap justify-center gap-10">
+        {% for tec in tecnologias %}
+        <i 
+            class="{{ tec.classe_icone }} tech-icon" 
+            role="img" 
+            aria-label="{{ tec.nome }}" 
+            title="{{ tec.nome }}"
+        ></i>
+        {% empty %}
+        <p class="text-gray-400">Nenhuma tecnologia cadastrada ainda.</p>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+<section id="projetos" class="py-20 px-8 max-w-5xl mx-auto text-center" aria-labelledby="projetos-titulo">
+    <h2 id="projetos-titulo" class="text-3xl font-bold mb-10 text-primary">Projetos</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      {% for projeto in projetos %}
+      <a href="{{ projeto.url_github }}" target="_blank" rel="noopener noreferrer" class="project-card block">
+        <h3 class="text-xl font-semibold mb-2">{{ projeto.titulo }}</h3>
+        <p class="text-gray-400 mb-4">
+          {{ projeto.descricao }}
+        </p>
+        <span class="text-primary group-hover:underline mt-2 inline-block">Ver no GitHub →</span>
+      </a>
+      {% empty %}
+        <p class="text-gray-400 md:col-span-2">Nenhum projeto ativo cadastrado. Adicione no Admin!</p>
+      {% endfor %}
+    </div>
+</section>
+
+<section id="contato" class="py-20 bg-gray-800 text-center" aria-labelledby="contato-titulo">
+    <h2 id="contato-titulo" class="text-3xl font-bold mb-8 text-primary">Contato</h2>
+    <p class="text-gray-300 mb-8">Entre em contato comigo através dos canais abaixo 👇</p>
+
+    <div class="flex justify-center gap-10">
+      <a href="mailto:devgegepythonjr@gmail.com" class="contact-icon" title="E-mail" aria-label="Enviar E-mail">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a href="https://t.me/DevGege" target="_blank" rel="noopener noreferrer" class="contact-icon" title="Telegram" aria-label="Abrir Telegram">
+        <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/geovane-paredes-39694b30b" target="_blank" rel="noopener noreferrer" class="contact-icon" title="LinkedIn" aria-label="Abrir LinkedIn">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </div>
+</section>
+{% endblock content %}

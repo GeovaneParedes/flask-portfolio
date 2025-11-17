@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="{% block description %}Portfólio pessoal de DevGege — Desenvolvedor Backend, Python e C#.{% endblock %}" />
+  <title>{% block title %}DevGege | Backend Developer{% endblock %}</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-bx8E9AIhKx8RtDA64soUThC6n2B6G8KxZz4C1DwTtOrwX7oJtfV74mKLeMZdWnxn3O7eYcRZR6BzKh7Zs3mT4g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--color-primary)',
+          },
+        },
+      },
+    };
+  </script>
+
+  {% block content %}{% endblock %}
+
+  <footer class="py-6 text-center text-gray-500 text-sm">
+    <small>© 2025 DevGege — Construído com ❤️ e tecnologias modernas.</small>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}" defer></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>
